@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+} */
+
+.radio {
+  position: relative;
+}
+
+.radio input {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  color: #3559f7;
+}
+
+.radio svg {
+  opacity: 0.5;
+}
+
+.radio label {
+  width: 120px;
+  height: 45px;
+  text-align: center;
+}
+
+.radio input:checked+label {
+  border-color: #3559f7;
+  background-color: #3557ea;
+  color: white;
+  text-align: center;
+}
+
+.radio input:checked+label svg {
+  opacity: 1;
+}
+
+.radio label:hover {
+  cursor: pointer;
+}

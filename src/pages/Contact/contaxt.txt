@@ -1,0 +1,384 @@
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+
+// eslint-disable-next-line react/prop-types
+const Header = ({ activeNavLink }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight =100;
+      setIsScrolled(window.scrollY > scrollHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
+  return (
+
+<div
+      className={`fixed z-10 w-screen shadow-lg ${
+        isScrolled ? "bg-white" : "z-10"
+      }`}
+    >      <div className=" mx-auto max-w-screen-2xl text-white bg-white  px-4 md:px-8">
+       
+        <header className={`${
+         menuOpen? "items-start" : "items-center"
+      } flex py-2   lg:items-center z-50   justify-between `}>
+          <NavLink
+            href="/"
+            className=" text-black-800 inline-flex items-center "
+            aria-label="logo"
+          >
+            <p className=" text-center h-full my-auto text-blue-600 px-6 ">RateYourInstitute</p>
+          </NavLink>
+
+          {menuOpen && (
+            <nav className=" flex flex-col pt-32  gap-4 lg:hidden items-center z-50 h-screen  bg-white">
+              <NavLink id="home" href="/"
+              onClick={()=> setMenuOpen(false)}>
+                <div
+                  className={
+                    activeNavLink == "home"
+                          
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  HOME
+                </div>
+              </NavLink>
+
+              <NavLink href="/about"
+              onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "about"
+                     
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  ABOUT
+                </div>
+              </NavLink>
+
+              <NavLink href="/services"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "services"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  SERVICES
+                </div>
+              </NavLink>
+
+              <NavLink href="/gallery"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "gallery"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  GALLERY
+                </div>
+              </NavLink>
+
+              <NavLink href="/faq"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "faqs"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  FAQs
+                </div>
+              </NavLink>
+
+              {/* <NavLink href="/blog"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "blog"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                   }
+                >
+                  BLOG
+                </div>
+              </NavLink> */}
+
+              <NavLink href="/contact"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "contact"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  CONTACT
+                </div>
+              </NavLink>
+            </nav>
+          )}
+
+<nav className="nav-row hidden z-50 pt-8 lg:pt-0 gap-12 lg:flex lg:flex-row">
+              <NavLink id="home" href="/"
+              onClick={()=> setMenuOpen(false)}>
+                <div
+                  className={
+                    activeNavLink == "home"
+                          
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  HOME
+                </div>
+              </NavLink>
+
+              <NavLink href="/about"
+              onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "about"
+                     
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  ABOUT
+                </div>
+              </NavLink>
+
+              <NavLink href="/services"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "services"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  SERVICES
+                </div>
+              </NavLink>
+
+              <NavLink href="/gallery"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "gallery"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  GALLERY
+                </div>
+              </NavLink>
+
+              <NavLink href="/faq"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "faqs"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  FAQs
+                </div>
+              </NavLink>
+
+              {/* <NavLink href="/blog"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "blog"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                   }
+                >
+                  BLOG
+                </div>
+              </NavLink> */}
+
+              <NavLink href="/contact"
+                            onClick={()=> setMenuOpen(false)}>
+
+                <div
+                  className={
+                    activeNavLink == "contact"
+                    ? "text-base py-2 md:py-0 font-medium bg-white lg:bg-none text-gray-700"
+                    : "text-base py-2 md:py-0 font-medium text-gray-800 transition duration-100 hover:text-gray-700"
+                  }
+                >
+                  CONTACT
+                </div>
+              </NavLink>
+            </nav>
+
+          <div className="flex">
+            <NavLink href={`/wishlist`}>
+              <div className=" h-12 w-12 flex sm:flex-col items-center justify-center gap-1.5 transition duration-100 hover:bg-orange-200
+              hover:bg-opacity-50 hover:backdrop-blur hover:backdrop-saturate-160 hover:backdrop-contrast-45 hover:backdrop-brightness-140
+               active:bg-orange-200 md:flex sm:h-20 sm:w-20 md:h-24 md:w-24">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-gray-800"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    // eslint-disable-next-line react/no-unknown-property
+                    stroke-linecap="round"
+                    // eslint-disable-next-line react/no-unknown-property
+                    stroke-linejoin="round"
+                    // eslint-disable-next-line react/no-unknown-property
+                    stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  />
+                </svg>
+
+                <span className="hidden sm:block text-xs font-semibold text-slate-800 md:block">
+                   Review
+                </span>
+              </div>
+            </NavLink>
+
+            {/* <NavLink href={`/signin`}>
+              <div className="flex h-12 w-12 flex-col items-center justify-center gap-1.5 transition duration-100  active:bg-orange-200
+               hover:bg-orange-200 
+               hover:bg-opacity-50 hover:backdrop-blur hover:backdrop-saturate-160 hover:backdrop-contrast-45 hover:backdrop-brightness-140
+               sm:h-20 sm:w-20 md:h-24 md:w-24">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-gray-800"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
+                </svg>
+
+                <span className="hidden text-xs font-semibold text-gray-700 sm:block">
+                  Account
+                </span>
+              </div>
+            </NavLink> */}
+
+            <NavLink href={`/login`}>
+              <div className="flex h-12 w-12 flex-col items-center justify-center gap-1.5 transition duration-100
+                active:bg-orange-200
+                hover:bg-orange-200 
+                hover:bg-opacity-50 hover:backdrop-blur hover:backdrop-saturate-160 hover:backdrop-contrast-45 hover:backdrop-brightness-140
+                sm:h-20 sm:w-20 md:h-24 md:w-24">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-gray-800"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    // eslint-disable-next-line react/no-unknown-property
+                    stroke-linecap="round"
+                    // eslint-disable-next-line react/no-unknown-property
+                    stroke-linejoin="round"
+                    // eslint-disable-next-line react/no-unknown-property
+                    stroke-width="2"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                  />
+                </svg>
+
+                <span className="hidden text-xs font-semibold text-gray-700 sm:block">
+                  Login
+                </span>
+              </div>
+            </NavLink>
+
+            <button
+              onClick={toggleMenu}
+              type="button"
+              className="flex h-12 w-12 flex-col items-center justify-center gap-1.5 transition duration-100 hover:bg-gray-100 active:bg-gray-200 sm:h-20 sm:w-20 md:h-24 md:w-24 lg:hidden z-[100]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-gray-800"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  // eslint-disable-next-line react/no-unknown-property
+                  fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  // eslint-disable-next-line react/no-unknown-property
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              <span className="hidden text-xs font-semibold text-gray-700 sm:block">
+                Menu
+              </span>
+            </button>
+          </div>
+
+          {/* <button
+            type="button"
+            className="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Menu
+          </button> */}
+        </header>
+      </div>
+    </div>
+  );
+};
+
+export default Header;

@@ -1,0 +1,32 @@
+@keyframes waveAnimation {
+    0% {
+      stroke-dashoffset: -1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  .wave-animation path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: -1000;
+    animation: waveAnimation 3s linear infinite;
+  }
+
+  .lines-animation path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: waveAnimation 3s linear infinite;
+  }
+  
+  @keyframes waveAnimation {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  
+  

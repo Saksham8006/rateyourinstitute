@@ -1,0 +1,24 @@
+.navlink{
+    position: relative;
+    text-decoration: none;
+    /* font-family: 'Poppins', sans-serif; */
+    color: #a0a0a0;
+    font-size: 16px;
+    /* letter-spacing: 0.5px; */
+    padding: 0px 10px;
+}
+
+.navlink:after{
+    content: "";
+    position: absolute;
+    background-color: #3e5ae7;
+    height: 2px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+.navlink:hover:after{
+    width: 100%;
+}
